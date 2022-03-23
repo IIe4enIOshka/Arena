@@ -12,8 +12,6 @@ namespace Arena
             Viking viking = new Viking("Викинг", 120, 40, 10, 20);
             Knight knight = new Knight("Рыцарь", 100, 30, 30, 30);
             Warrior warrior = new Warrior("Воин", 170, 20, 20, 2, 30);
-            //Gladiator[] gladiators = { ninja, vampire, viking, knight, warrior };
-
             List<Gladiator> gladiators = new List<Gladiator>() { ninja, vampire, viking, knight, warrior };
 
             Arena arena = new Arena(gladiators);
@@ -24,7 +22,6 @@ namespace Arena
         {
             private Gladiator _gladiatorOne;
             private Gladiator _gladiatorSecond;
-            //private Gladiator[] _gladiators;
             private List<Gladiator> _gladiators;
 
             public void Start()
@@ -36,7 +33,7 @@ namespace Arena
                 Fight();
             }
 
-            public Arena(/*Gladiator[] gladiators*/ List<Gladiator> gladiators)
+            public Arena(List<Gladiator> gladiators)
             {
                 _gladiators = gladiators;
             }
@@ -64,7 +61,7 @@ namespace Arena
                 }
             }
 
-            private void CheckWin()
+            private void ShowWhoWin()
             {
                 if (_gladiatorOne.Health <= 0 && _gladiatorSecond.Health <= 0)
                 {
@@ -92,7 +89,7 @@ namespace Arena
                         Console.WriteLine();
                         _gladiatorOne.ShowInfo();
                         _gladiatorSecond.ShowInfo();
-                        CheckWin();
+                        ShowWhoWin();
 
                         Console.ReadKey();
                     }
@@ -108,36 +105,31 @@ namespace Arena
         {
             private Random _random = new Random();
 
-            protected string _name;
-            protected int _health;
-            protected int _damage;
-            protected int _armor;
-            protected int _saveDamage;
-            protected int _saveArmor;
-
-            public int Health => _health;
-            public int Damage => _damage;
-            public string Name => _name;
-            public int Armor => _armor;
+            public string Name { get; protected set; }
+            public int Health { get; protected set; }
+            public int Damage { get; protected set; }
+            public int Armor { get; protected set; }
+            public int SaveDamage { get; protected set; }
+            public int SaveArmor { get; protected set; }
 
             public Gladiator(string name, int health, int damage, int armor)
             {
-                _health = health;
-                _damage = damage;
-                _armor = armor;
-                _name = name;
-                _saveDamage = damage;
-                _saveArmor = armor;
+                Health = health;
+                Damage = damage;
+                Armor = armor;
+                Name = name;
+                SaveDamage = damage;
+                SaveArmor = armor;
             }
 
             public Gladiator(Gladiator gladiator)
             {
-                _health = gladiator.Health;
-                _damage = gladiator.Damage;
-                _armor = gladiator.Armor;
-                _name = gladiator.Name;
-                _saveDamage = gladiator.Damage;
-                _saveArmor = gladiator.Armor;
+                Health = gladiator.Health;
+                Damage = gladiator.Damage;
+                Armor = gladiator.Armor;
+                Name = gladiator.Name;
+                SaveDamage = gladiator.Damage;
+                SaveArmor = gladiator.Armor;
             }
 
             public void TakeDamage(int damage)
@@ -149,11 +141,11 @@ namespace Arena
                 if (_random.Next(maxProbability) > probability)
                 {
                     UseSpecialAttack();
-                    Console.WriteLine($"{_name} Выполнил специальную атаку");
+                    Console.WriteLine($"{Name} Выполнил специальную атаку");
                 }
 
-                _health -= damage - _armor;
-                _health = Clamp(_health, 0, maxHealth);
+                Health -= damage - Armor;
+                Health = Clamp(Health, 0, maxHealth);
                 CancelBonus();
             }
 
@@ -170,13 +162,13 @@ namespace Arena
 
             public void ShowInfo()
             {
-                Console.WriteLine($"{_name} здоровье {_health} урон {_damage} броня {_armor}");
+                Console.WriteLine($"{Name} здоровье {Health} урон {Damage} броня {Armor}");
             }
 
             private void CancelBonus()
             {
-                _damage = _saveDamage;
-                _armor = _saveArmor;
+                Damage = SaveDamage;
+                Armor = SaveArmor;
             }
 
             protected virtual void UseSpecialAttack()
@@ -198,8 +190,8 @@ namespace Arena
 
             protected override void UseSpecialAttack()
             {
-                _damage *= _berserkDamage;
-                _health -= _fine;
+                Damage *= _berserkDamage;
+                Health -= _fine;
             }
         }
 
@@ -214,8 +206,8 @@ namespace Arena
 
             protected override void UseSpecialAttack()
             {
-                _damage *= _speedDamage;
-                _armor = 0;
+                Damage *= _speedDamage;
+                Armor = 0;
             }
         }
 
@@ -230,7 +222,7 @@ namespace Arena
 
             protected override void UseSpecialAttack()
             {
-                _damage += _battleCry;
+                Damage += _battleCry;
             }
         }
 
@@ -245,7 +237,7 @@ namespace Arena
 
             protected override void UseSpecialAttack()
             {
-                _health += _amountHpRegeneration;
+                Health += _amountHpRegeneration;
             }
         }
 
@@ -260,7 +252,7 @@ namespace Arena
 
             protected override void UseSpecialAttack()
             {
-                _armor += _defense;
+                Armor += _defense;
             }
         }
     }
