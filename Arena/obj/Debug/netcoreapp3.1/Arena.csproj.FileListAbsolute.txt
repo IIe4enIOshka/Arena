@@ -1,0 +1,13 @@
+C:\Users\Alexey\source\repos\Arena\Arena\bin\Debug\netcoreapp3.1\Arena.exe
+C:\Users\Alexey\source\repos\Arena\Arena\bin\Debug\netcoreapp3.1\Arena.deps.json
+C:\Users\Alexey\source\repos\Arena\Arena\bin\Debug\netcoreapp3.1\Arena.runtimeconfig.json
+C:\Users\Alexey\source\repos\Arena\Arena\bin\Debug\netcoreapp3.1\Arena.runtimeconfig.dev.json
+C:\Users\Alexey\source\repos\Arena\Arena\bin\Debug\netcoreapp3.1\Arena.dll
+C:\Users\Alexey\source\repos\Arena\Arena\bin\Debug\netcoreapp3.1\Arena.pdb
+C:\Users\Alexey\source\repos\Arena\Arena\obj\Debug\netcoreapp3.1\Arena.AssemblyInfoInputs.cache
+C:\Users\Alexey\source\repos\Arena\Arena\obj\Debug\netcoreapp3.1\Arena.AssemblyInfo.cs
+C:\Users\Alexey\source\repos\Arena\Arena\obj\Debug\netcoreapp3.1\Arena.csproj.CoreCompileInputs.cache
+C:\Users\Alexey\source\repos\Arena\Arena\obj\Debug\netcoreapp3.1\Arena.dll
+C:\Users\Alexey\source\repos\Arena\Arena\obj\Debug\netcoreapp3.1\Arena.pdb
+C:\Users\Alexey\source\repos\Arena\Arena\obj\Debug\netcoreapp3.1\Arena.genruntimeconfig.cache
+C:\Users\Alexey\source\repos\Arena\Arena\obj\Debug\netcoreapp3.1\Arena.csprojAssemblyReference.cache
